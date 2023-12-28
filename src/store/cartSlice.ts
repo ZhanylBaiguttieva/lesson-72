@@ -25,6 +25,13 @@ const cartSlice = createSlice({
         });
       }
     },
+    removeMeat: (state, {payload: meat}: PayloadAction<Dish>) => {
+      const index = state.cartMeats.findIndex(cartMeat => cartMeat.meat.id === meat.id);
+
+      if (index !== -1) {
+        state.cartMeats[index].amount--;
+      }
+    },
     updateCart: (state, {payload: meats}: PayloadAction<Dish[]>) => {
       const newCartMeats: CartMeat[] = [];
 
@@ -47,5 +54,5 @@ const cartSlice = createSlice({
   }
 });
 export const cartReducer = cartSlice.reducer;
-export const {addMeat, clearCart, updateCart} = cartSlice.actions;
+export const {addMeat, removeMeat, clearCart, updateCart} = cartSlice.actions;
 export const selectCartMeats = (state:RootState) => state.cart.cartMeats;

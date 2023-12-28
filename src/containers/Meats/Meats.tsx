@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../../../app/hooks';
-import Spinner from '../../Spinners/Spinner';
-import {Dish} from '../../../types';
-import {selectFetchMeatLoading, selectMeats} from '../../../store/meats/meatsSlice';
-import {fetchMeats} from '../../../store/meats/meatsThunks';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
+import Spinner from '../../components/Spinners/Spinner';
+import {Dish} from '../../types';
+import {selectFetchMeatLoading, selectMeats} from '../../store/meats/meatsSlice';
+import {fetchMeats} from '../../store/meats/meatsThunks';
 import MeatItem from './MeatItem';
 
 const Meats: React.FC= () => {

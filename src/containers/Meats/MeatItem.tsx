@@ -1,7 +1,7 @@
-import {Dish} from '../../../types';
+import {Dish} from '../../types';
 import React from 'react';
-import {useAppDispatch} from '../../../app/hooks';
-import {addMeat} from '../../../store/cartSlice';
+import {useAppDispatch} from '../../app/hooks';
+import {addMeat} from '../../store/cartSlice';
 
 interface Props {
   meat: Dish;

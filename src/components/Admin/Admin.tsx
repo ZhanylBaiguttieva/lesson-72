@@ -1,4 +1,4 @@
-import NavBar from './NavBar/NavBar';
+import NavBar from '../NavBar/NavBar';
 
 const Admin = () => {
   let children;
@@ -7,9 +7,7 @@ const Admin = () => {
       <header>
         <NavBar/>
       </header>
-      <main className="container-fluid">
-        {children}
-      </main>
+      {children}
     </>
   );
 };

@@ -4,7 +4,7 @@ import Admin from './components/Admin/Admin';
 import Dishes from './components/Dishes/Dishes';
 import NewDish from './components/NewDish/NewDish';
 import EditDish from './components/EditDish/EditDish';
-import Client from './components/containers/Client/Client';
+import Client from './containers/Client/Client';
 
 function App() {
 

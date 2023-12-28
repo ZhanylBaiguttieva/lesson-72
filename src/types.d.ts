@@ -16,3 +16,8 @@ export interface DishMutation {
   price: string;
   image: string;
 }
+
+export interface CartMeat {
+  meat: Dish;
+  amount: number;
+}

@@ -5,6 +5,7 @@ import Dishes from './components/Dishes/Dishes';
 import NewDish from './components/NewDish/NewDish';
 import EditDish from './components/EditDish/EditDish';
 import Client from './containers/Client/Client';
+import Orders from './containers/Orders/Orders';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Client />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/dishes" element={(<Dishes/>)} />
+      <Route path="/admin/orders" element={(<Orders/>)} />
       <Route path="/admin/new-dish" element={(<NewDish/>)} />
       <Route path="/admin/edit-dish/:id" element={<EditDish/>} />
     </Routes>

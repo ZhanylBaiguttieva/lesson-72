@@ -1,18 +1,22 @@
-import {CartMeat, Dish} from '../../types';
+import {ApiOrder, CartMeat, Dish} from '../../types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../../app/store';
-import {createOrder} from './cartThunks';
+import {createOrder, fetchOrders} from './cartThunks';
 
 interface CartState {
   cartMeats: CartMeat[];
-  cartMeat: CartMeat | null;
+  items: ApiOrder[];
+  // cartMeat: CartMeat | null;
   createLoading: boolean;
+  fetchLoading: boolean;
 }
 
 const initialState: CartState = {
   cartMeats:[],
-  cartMeat: null,
+  items: [],
+  // cartMeat: null,
   createLoading: false,
+  fetchLoading: false,
 };
 
 const cartSlice = createSlice({
@@ -70,9 +74,24 @@ const cartSlice = createSlice({
     builder.addCase(createOrder.rejected, (state) => {
       state.createLoading = false;
     });
+    builder.addCase(fetchOrders.pending, (state) => {
+      state.fetchLoading = true;
+    });
+
+    builder.addCase(fetchOrders.fulfilled, (state,{payload: items}) => {
+      state.fetchLoading = false;
+      state.items = items;
+    });
+
+    builder.addCase(fetchOrders.rejected, (state) => {
+      state.fetchLoading = false;
+    });
   },
 });
 export const cartReducer = cartSlice.reducer;
 export const {addMeat, removeMeat, clearCart, updateCart} = cartSlice.actions;
 export const selectCartMeats = (state:RootState) => state.cart.cartMeats;
-export const selectCartMeat = (state: RootState) => state.cart.cartMeat;
+export const selectOrders = (state: RootState) => state.cart.items;
+
+export const selectFetchOrdersLoading  = (state: RootState) => state.cart.fetchLoading;
+// export const selectCartMeat = (state: RootState) => state.cart.cartMeat;

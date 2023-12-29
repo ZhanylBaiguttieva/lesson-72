@@ -1,4 +1,4 @@
-import cartMeats from './containers/Cart/CartMeats';
+
 
 export interface Dish {
   id: string;
@@ -26,5 +26,10 @@ export interface CartMeat {
 
 export interface Order {
   [id: string]: number;
+}
+
+export interface ApiOrder {
+  id: string;
+  dishes: ApiDish[];
 }
 

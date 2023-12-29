@@ -1,3 +1,5 @@
+import cartMeats from './containers/Cart/CartMeats';
+
 export interface Dish {
   id: string;
   title: string;
@@ -21,3 +23,8 @@ export interface CartMeat {
   meat: Dish;
   amount: number;
 }
+
+export interface Order {
+  [id: string]: number;
+}
+

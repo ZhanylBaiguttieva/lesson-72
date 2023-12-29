@@ -10,16 +10,12 @@ interface Props {
 }
 
 const DishItem: React.FC<Props> = ({dish, deleteLoading, onDelete}) => {
-  // const dispatch = useAppDispatch();
   const imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png';
 
   const image = dish.image || imageUrl;
   const imageStyle = {
     background: `url(${image}) no-repeat center center / cover`,
   };
-  // const addDishToCart  = () => {
-  //   dispatch(addDish(dish));
-  // };
 
   return (
     <div className="card mb-2">
@@ -30,7 +26,6 @@ const DishItem: React.FC<Props> = ({dish, deleteLoading, onDelete}) => {
             <h5 className="card-title">{dish.title}</h5>
             <p className="card-text">{dish.price} KGS</p>
             <p className="d-flex gap-2">
-              {/*<button className="btn btn-success" onClick={addDishToCart}>Add</button>*/}
               <button
                 className="btn btn-danger"
                 onClick={onDelete}

@@ -1,17 +1,18 @@
 import {CartMeat} from '../../types';
 import React from 'react';
 import CartItem from './CartItem';
-import {useAppDispatch} from '../../app/hooks';
-import {removeMeat} from '../../store/cartSlice';
+// import {DELIVERY} from '../../constants';
 
 interface Props {
   cartMeats: CartMeat[];
+  // delivery: typeof DELIVERY;
 }
 
 const CartMeats: React.FC<Props> = ({cartMeats}) => {
+  const deliveryCost = 150;
   const total = cartMeats.reduce((sum, cartMeat) => {
     return sum + cartMeat.amount * cartMeat.meat.price;
-  }, 0);
+  }, 0) + deliveryCost;
 
   return (
     <>
@@ -19,6 +20,7 @@ const CartMeats: React.FC<Props> = ({cartMeats}) => {
         <CartItem key={cartMeat.meat.id} cartMeat={cartMeat}/>
       ))}
       <div className="card border-0 p-2">
+        <div className="text-end"> Delivery costs: <strong>{deliveryCost}</strong> KGS</div>
         <div className="row">
           <div className="col text-end">
             Total:

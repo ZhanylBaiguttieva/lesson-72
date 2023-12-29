@@ -1,14 +1,20 @@
-import {CartMeat, Dish} from '../types';
+import {CartMeat, Dish} from '../../types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from '../app/store';
+import {RootState} from '../../app/store';
+import {createOrder} from './cartThunks';
 
 interface CartState {
   cartMeats: CartMeat[];
+  cartMeat: CartMeat | null;
+  createLoading: boolean;
 }
 
 const initialState: CartState = {
   cartMeats:[],
+  cartMeat: null,
+  createLoading: false,
 };
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -51,8 +57,22 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.cartMeats = [];
     },
-  }
+  },
+  extraReducers:(builder) => {
+    builder.addCase(createOrder.pending, (state) => {
+      state.createLoading = true;
+    });
+
+    builder.addCase(createOrder.fulfilled, (state) => {
+      state.createLoading = false;
+    });
+
+    builder.addCase(createOrder.rejected, (state) => {
+      state.createLoading = false;
+    });
+  },
 });
 export const cartReducer = cartSlice.reducer;
 export const {addMeat, removeMeat, clearCart, updateCart} = cartSlice.actions;
 export const selectCartMeats = (state:RootState) => state.cart.cartMeats;
+export const selectCartMeat = (state: RootState) => state.cart.cartMeat;

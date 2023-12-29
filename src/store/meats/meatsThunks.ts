@@ -2,7 +2,7 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import {Dish, DishesList} from '../../types';
 import {AppDispatch} from '../../app/store';
 import axiosApi from '../../axiosApi';
-import {updateCart} from '../cartSlice';
+import {updateCart} from '../carts/cartSlice';
 
 export const fetchMeats = createAsyncThunk<Dish[], undefined, {dispatch: AppDispatch}>(
   'meats/fetchAll',

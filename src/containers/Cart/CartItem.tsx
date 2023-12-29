@@ -1,6 +1,6 @@
 import {CartMeat} from '../../types';
 import React from 'react';
-import {removeMeat} from '../../store/cartSlice';
+import {removeMeat} from '../../store/carts/cartSlice';
 import {useAppDispatch} from '../../app/hooks';
 
 interface Props {
